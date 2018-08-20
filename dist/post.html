@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
-    <title>Contact Me</title>
+    <title>Send me something</title>
   </head>
   <body>
     <header>
@@ -33,12 +33,12 @@
               My Work
             </a>
           </li>
-          <li class="nav-item current">
+          <li class="nav-item">
             <a href="contact.html" class="nav-link">
               How to Reach Me
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item current">
             <a href="post.html" class="nav-link">
               Tell me Something
             </a>
@@ -48,11 +48,25 @@
     </header>
 
     <main id="contact">
-      <h1 class="lg-heading">Contact <span class="text-secondary">Me</span></h1>
-      <h2 class="sm-heading">How you can reach me...</h2>
+      <h1 class="lg-heading">Write <span class="text-secondary">To me</span></h1>
+      <h2 class="sm-heading">Send me something here...</h2>
       <div class="boxes">
         <div>
-          <spam
+          <form method="POST" action="users/add">
+            <label>Full Name</label><br>
+            <input type="text" name="full_name">
+            <br>
+            <label>Email</label><br>
+            <input type="text" name="email">
+            <br>
+            <label>Query</label><br>
+            <input type="text" name="query" placeholder="Type something here ...">
+            <!-- <textarea rows="15" cols="30">
+            </textarea> -->
+            <br><br>
+            <input type="submit" value="Submit">
+          </form>
+          <!-- <spam
           class="text-secondary">Email:</spam>
           jadealvares@hotmail.co.uk
         </div>
@@ -61,7 +75,7 @@
           class="text-secondary">Number:</spam>
           +44 79 69 100 968
         </div>
-      </div>
+      </div> -->
     </main>
 
     <footer id="main-footer">
