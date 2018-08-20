@@ -1,32 +1,33 @@
-//Select DOM items
-
+// Select DOM Items
 const menuBtn = document.querySelector('.menu-btn');
 const menu = document.querySelector('.menu');
 const menuNav = document.querySelector('.menu-nav');
 const menuBranding = document.querySelector('.menu-branding');
-const navItems = document.querySelectorAll('.nav-items');
+const navItems = document.querySelectorAll('.nav-item');
 
-//Set initial state of menu (the overlay)
+// Set Initial State Of Menu
 let showMenu = false;
 
 menuBtn.addEventListener('click', toggleMenu);
 
 function toggleMenu() {
-  if(!showMenu) {
+  if (!showMenu) {
     menuBtn.classList.add('close');
-    menuBtn.classList.add('show');
+    menu.classList.add('show');
     menuNav.classList.add('show');
     menuBranding.classList.add('show');
-    navItems.forEach(otem => item.classList.add('show'));
-    //Reset menu state
+    navItems.forEach(item => item.classList.add('show'));
+
+    // Set Menu State
     showMenu = true;
   } else {
     menuBtn.classList.remove('close');
-    menuBtn.classList.remove('show');
+    menu.classList.remove('show');
     menuNav.classList.remove('show');
     menuBranding.classList.remove('show');
-    navItems.forEach(otem => item.classList.remove('show'));
-    //Reset menu state
+    navItems.forEach(item => item.classList.remove('show'));
+
+    // Reset Menu State
     showMenu = false;
   }
 }
