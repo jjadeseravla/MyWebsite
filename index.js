@@ -12,6 +12,12 @@ app.use(bodyParser.urlencoded({extended: false}));
 //Set static path
 app.use(express.static(path.join(__dirname, 'dist')));
 
+//Global Vars
+app.use(function(req, res, next) {
+  res.locals.errors = null;
+  next();
+});
+
 //Express Validator Middleware (sets up error formatter etc)
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
