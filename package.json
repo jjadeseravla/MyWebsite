@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/jjadeseravla/MyWebsite#readme",
   "dependencies": {
+    "body-parser": "*",
+    "express": "*",
     "node-sass": "^4.9.2"
   }
 }
