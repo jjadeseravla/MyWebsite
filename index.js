@@ -2,6 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var expressValidator = require('express-validator');
+var mongojs = require('mongojs');
+var db = mongojs('nameofyourdbegcustomerapp', ['users']);
 
 var app = express();
 
@@ -36,9 +38,16 @@ app.use(expressValidator({
   }
 }));
 
-// app.get('/', function(req, res){
-//   res.send('Hello World');
-// });
+app.get('/', function(req, res){
+  db.users.find(function (err, docs) {
+    //array of all documents in collection
+    console.log(docs);
+    res.render('index', {
+      title: 'Customers',
+      users: docs
+    });
+  })
+});
 
 // app.get('/about', function(req, res, next) {
 //   res.render('./dist/about.html');
