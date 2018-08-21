@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var expressValidator = require('express-validator');
 var mongojs = require('mongojs');
-var db = mongojs('nameofyourdbegcustomerapp', ['users']);
+var db = mongojs('customerapp', ['users']);
 
 var app = express();
 
@@ -40,10 +40,10 @@ app.use(expressValidator({
 
 app.get('/', function(req, res){
   db.users.find(function (err, docs) {
-    //array of all documents in collection
-    console.log(docs);
+    //array of all documents in the collection
+    // console.log(docs);
     res.render('index', {
-      title: 'Customers',
+      // title: 'Customers',
       users: docs
     });
   })
@@ -53,26 +53,31 @@ app.get('/', function(req, res){
 //   res.render('./dist/about.html');
 // });
 
-app.post('/users/add', function(req, res){
+app.post('/', function(req, res){
 
   req.checkBody('full_name', 'Full Name is Required').notEmpty();
   req.checkBody('email', 'Email is Required').notEmpty();
-  req.checkBody('Query', 'A Message is Required').notEmpty();
+  req.checkBody('query', 'A Message is Required').notEmpty();
 
   var errors = req.validationErrors();
 
   if(errors){
-    console.log('ERRORSSSS');
+    console.log('errors');
   } else {
       var newUser = {
         full_name: req.body.full_name,
         email: req.body.email,
         query: req.body.query
       }
-      console.log('Success!!');
+      db.users.insert(newUser, function(err, result){
+        if(err){
+          console.log(err);
+        }
+        res.redirect('/');
+      });
   }
 
-  console.log(newUser);
+  // console.log(newUser);
 });
 
 app.listen(3000, function() {
