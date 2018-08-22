@@ -14,5 +14,5 @@ to copy sass to css
 - connect to mongoDB - done
 - put content in
 - put in new images and redesign
-- testing??
+- testing?? run npm test
 - heroku ??

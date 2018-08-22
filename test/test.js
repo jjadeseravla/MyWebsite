@@ -1,7 +1,10 @@
+// process.env.NODE_ENV = 'test';
+
 var request = require("request"),
     assert = require('chai').assert,
-    chai = require('chai');
-    server = require('../index');
+    chai = require('chai'),
+    server = require('../index'),
+    should = chai.should(),
     // helloWorld = require("../index.js"),
     base_url = "http://localhost:3000/";
 
