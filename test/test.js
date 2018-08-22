@@ -1,16 +1,51 @@
 var request = require("request"),
     assert = require('chai').assert,
-    helloWorld = require("../index.js"),
+    chai = require('chai');
+    server = require('../index');
+    // helloWorld = require("../index.js"),
     base_url = "http://localhost:3000/";
 
 describe("Hello World Server", function() {
   describe("GET /", function() {
     it("returns status code 200", function(done) {
-      request.get(base_url, function(error, response, body) {
-        assert.equal(200, response.statusCode);
+      request.get(base_url, function(error, res, body) {
+        assert.equal(200, res.statusCode);
         done();
       });
     });
+
+    it("adds a single query on POST", function(done) {
+      // chai.request(server)
+      request.get(server)
+      .post('/post')
+      .send({full_name: 'JadeAlvares', 'email': 'jadealvares@hotmail.co.uk', 'query': 'hello'})
+      .end(function(err, res){
+        console.log(res.body);
+      res.should.have.status(200);
+      res.body.should.have.property('full_name');
+      res.body.should.have.property('email');
+      res.body.should.have.property('query');
+      // res.body.fullName.should.equal('JadeAlvares');
+      done();
+      });
+    });
+
+  });
+});
+
+
+
+
+
+
+      // it('should list ALL blobs on /blobs GET', function(done) {
+      //   chai.request(server)
+      //     .get('/blobs')
+      //     .end(function(err, res){
+      //       res.should.have.status(200);
+      //       done();
+      //     });
+      //   });
 
   //     it("returns Hello World", function(done) {
   //     request.get(base_url, function(error, response, body) {
@@ -20,8 +55,6 @@ describe("Hello World Server", function() {
   //       done();
   //     });
   //   });
-  // });
-});
 
 
 // let convert = require('..index.js');
