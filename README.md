@@ -10,8 +10,8 @@ to copy sass to css
 
 
 ## Future Advancements
-- fix validator out  
-- connect to mongoDB
+- fix validator out  - done
+- connect to mongoDB - done
 - put content in
 - put in new images and redesign
 - testing??
