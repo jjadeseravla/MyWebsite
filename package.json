@@ -4,6 +4,7 @@
   "description": "Jade's website",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "mocha",
     "sass": "node-sass -w scss/ -o dist/css/ --recursive"
   },

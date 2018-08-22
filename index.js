@@ -2,10 +2,13 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var expressValidator = require('express-validator');
-var mongojs = require('mongojs');
+//var mongojs = require('mongojs');
 var mongoose = require('mongoose');
 //var db = mongojs('customerapp', ['users']);
-mongoose.connect('mongodb://localhost/customerapp');
+
+//Connect to MongoDB
+// mongoose.connect('mongodb://localhost/customerapp');
+mongoose.connect('mongodb://mongo:271017/customerapp');
 let db = mongoose.connection;
 
 //config file
