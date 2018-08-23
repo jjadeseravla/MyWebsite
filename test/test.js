@@ -1,12 +1,15 @@
-// process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = 'test';
 
 var request = require("request"),
     assert = require('chai').assert,
     chai = require('chai'),
     server = require('../index'),
+    User = require(models/user),
     should = chai.should(),
+    //chai.use(chaiHttp),
     // helloWorld = require("../index.js"),
     base_url = "http://localhost:3000/";
+
 
 describe("Hello World Server", function() {
   describe("GET /", function() {
@@ -16,6 +19,28 @@ describe("Hello World Server", function() {
         done();
       });
     });
+  });
+//});
+
+
+describe('Users', function() {
+
+  User.collection.drop();
+
+    beforeEach(function(done){
+    var newUser = new User({
+      full_name: 'Borris',
+      email: 'man@gmail.com',
+      query: 'Greetings'
+    });
+    newUser.save(function(err) {
+      done();
+    });
+  });
+  afterEach(function(done){
+    User.collection.drop();
+    done();
+  });
 
     it("adds a single query on POST", function(done) {
       // chai.request(server)
@@ -28,13 +53,15 @@ describe("Hello World Server", function() {
       res.body.should.have.property('full_name');
       res.body.should.have.property('email');
       res.body.should.have.property('query');
-      // res.body.fullName.should.equal('JadeAlvares');
+      res.body.fullName.should.equal('JadeAlvares');
+      res.body.email.should.equal('jadealvares@hotmail.co.uk');
+      res.body.query.should.equal('hello');
       done();
       });
     });
 
-  });
-});
+   });
+ });
 
 //https://mherman.org/blog/2015/09/10/testing-node-js-with-mocha-and-chai/#test---get-all
 

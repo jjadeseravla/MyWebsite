@@ -6,13 +6,23 @@ var expressValidator = require('express-validator');
 var mongoose = require('mongoose');
 //var db = mongojs('customerapp', ['users']);
 
+//config file
+var config = require('./_config');
+
+// *** mongoose *** ///
+mongoose.connect(config.mongoURI[app.settings.env], function(err, res) {
+  if(err) {
+    console.log('Error connecting to the database. ' + err);
+  } else {
+    console.log('Connected to Database: ' + config.mongoURI[app.settings.env]);
+  }
+});
+
 //Connect to MongoDB
-// mongoose.connect('mongodb://localhost/customerapp');
-mongoose.connect('mongodb://mongo:271017/customerapp');
+mongoose.connect('mongodb://localhost/customerapp');
+//mongoose.connect('mongodb://mongo:271017/customerapp');
 let db = mongoose.connection;
 
-//config file
-//var config = require('config');
 
 //check connection
 db.once('open', function(){

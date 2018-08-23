@@ -16,6 +16,7 @@
 4 Start server on ```localhost:3000```
 
 ### To Run Tests
+```npm install mocha -save ```
 1 ```npm test```
 
 ## Styling Changes
